@@ -21,15 +21,15 @@
 <div class="row">
   <div class="col-xs-12">
     <div class="centered">
-      <app-game-control (gameStarted)="onGameStarted($event)" (gameEnded)="onGameEnded()"></app-game-control>
+      <app-game-control (gameStarted)="onGameStarted($event)"></app-game-control>
     </div>
   </div>
 </div>
 <div class="row">
   <div class="col-xs-12">
     <div>
-      <app-even class="centered" *ngFor="let even of evenComponents"></app-even>
-      <app-odd class="centered" *ngFor="let odd of oddComponents"></app-odd>
+      <app-odd class="centered" *ngFor="let odd of oddNumbers" [number]="odd"></app-odd>
+      <app-even class="centered" *ngFor="let even of evenNumbers" [number]="even"></app-even>
     </div>
   </div>
 </div>

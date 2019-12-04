@@ -7,10 +7,10 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class GameControlComponent implements OnInit {
 
-  @Output() gameStarted = new EventEmitter<{ nextNumber: number }>();
-  @Output() gameEnded = new EventEmitter<{ any }>();
+  @Output() gameStarted = new EventEmitter<number>();
 
   interval;
+  lastNumber = 0;
 
   constructor() { }
 
@@ -18,14 +18,12 @@ export class GameControlComponent implements OnInit {
   }
 
   startGame() {
-    let index = 1;
     this.interval = setInterval(() => {
-      this.gameStarted.emit({ nextNumber: ++index });
-    }, 1000, this.gameStarted);
+      this.gameStarted.emit(this.lastNumber + 1); this.lastNumber++;
+    }, 1000);
   }
 
   stopGame() {
     clearInterval(this.interval);
-    this.gameEnded.emit(null);
   }
 }

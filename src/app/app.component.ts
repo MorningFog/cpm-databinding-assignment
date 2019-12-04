@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { nextTick } from 'q';
-import { EvenComponent } from './even/even.component';
-import { OddComponent } from './odd/odd.component';
 
 @Component({
   selector: 'app-root',
@@ -10,24 +7,14 @@ import { OddComponent } from './odd/odd.component';
 })
 export class AppComponent {
 
-  evenComponents = [];
-  oddComponents = [];
+  oddNumbers: number[] = [];
+  evenNumbers: number[] = [];
 
-  onGameStarted(numberData: { nextNumber: number }) {
-    const aNumber = numberData.nextNumber;
-    if (aNumber % 2 === 0) {
-      const even = new EvenComponent();
-      even.setNumber(aNumber);
-      this.evenComponents.push(even);
+  onGameStarted(firedNumber: number) {
+    if (firedNumber % 2 === 0) {
+      this.evenNumbers.push(firedNumber);
     } else {
-      const odd = new OddComponent();
-      odd.setNumber(aNumber);
-      this.oddComponents.push(odd);
+      this.oddNumbers.push(firedNumber);
     }
-  }
-
-  onGameEnded() {
-    this.evenComponents.splice(0, this.evenComponents.length);
-    this.oddComponents.splice(0, this.oddComponents.length);
   }
 }
