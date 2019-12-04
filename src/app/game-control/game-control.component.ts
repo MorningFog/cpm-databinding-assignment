@@ -10,7 +10,7 @@ export class GameControlComponent implements OnInit {
   @Output() gameStarted = new EventEmitter<{ nextNumber: number }>();
   @Output() gameEnded = new EventEmitter<{ any }>();
 
-  interval: NodeJS.Timeout;
+  interval;
 
   constructor() { }
 
